@@ -1,0 +1,114 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="multi" style="background: url('{% static "img/engine-min.jpg" %}') no-repeat center/cover;">
+  <h1>Buy the best car/rental deals on ZacMotors!</h1>
+  <p>Incredible Deals, Special Offers and Discount up to 30%</p>
+</div>
+
+<section class="dealer-hero-section">
+  <div class="services-section">
+    <div class="services-left">
+      <h2>The services<br />offered</h2>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry’s standard dummy text
+        ever since the 1500s.
+      </p>
+
+      <div class="stats">
+        <div class="stat-box">
+          <h3>250K+</h3>
+          <span>Active Users</span>
+        </div>
+        <div class="stat-box">
+          <h3>250K+</h3>
+          <span>Active Users</span>
+        </div>
+        <div class="stat-box">
+          <h3>250K+</h3>
+          <span>Active Users</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-card">
+      <div class="service-item">
+        <h4>Buy a Car</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="service-item">
+        <h4>Sell a Car</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="service-item">
+        <h4>Trade In</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+        <span class="arrow">›</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dealer-features">
+    <div class="feature-box">
+      <h3>Reliable deals</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <img src="{% static 'img/car-min.jpg' %}" alt="">
+    </div>
+
+    <div class="feature-box">
+      <h3>Best prices</h3>
+      <p>Lorem ipsum dolor sit amet consectetur.</p>
+      <img src="{% static 'img/car1-min.jpg' %}" alt="">
+    </div>
+
+    <div class="feature-box">
+      <h3>Huge selection</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <img src="{% static 'img/car2-min.jpg' %}" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="why-choose-section">
+  <h2>Why choose us?</h2>
+
+  <div class="why-choose-grid">
+    <div class="wc-item">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>No hidden surprises</h3>
+      <p>We provide you with a detailed inspection report based on 200+ parameters.</p>
+    </div>
+
+    <div class="wc-item">
+      <i class="fa-solid fa-hand-holding-dollar"></i>
+      <h3>100% Safe transaction</h3>
+      <p>We check and verify all the documents of the car.</p>
+    </div>
+
+    <div class="wc-item">
+      <i class="fa-solid fa-headset"></i>
+      <h3>Support at every stage</h3>
+      <p>Our managers answer questions and help verify information.</p>
+    </div>
+
+    <div class="wc-item">
+      <i class="fa-solid fa-hand-holding-heart"></i>
+      <h3>Flexible purchase</h3>
+      <p>We offer car loans to make financing easier.</p>
+    </div>
+  </div>
+
+  <div class="city-select">
+    <label>Select your city:</label>
+    <button class="active">All</button>
+    <button>Lagos</button>
+    <button>Abuja</button>
+    <button>Ikeja</button>
+  </div>
+</section>
+
+{% endblock %}

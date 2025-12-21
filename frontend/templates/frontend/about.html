@@ -1,0 +1,189 @@
+{% extends 'frontend/base.html' %} {% load static %} {% block title %}ZacMotors
+– Company Profile{% endblock %} {% block content %}
+<!-- ====================== HERO SECTION ====================== -->
+<section class="abt-section">
+  <h1>Your Trusted Car Partner</h1>
+  <p>
+    We're passionate about making car ownership easy and transparent, delivering
+    a hassle-free experience for all your car needs.
+  </p>
+</section>
+
+<!-- ========================= WHO WE ARE ========================= -->
+<section class="who">
+  <div class="who-con">
+    <div class="inner-who">
+      <h2>Who We Are</h2>
+      <p>
+        Zac Motors is a leading automotive dealership committed to delivering
+        premium value to individuals and organizations. From brand-new cars to
+        affordable foreign-used selections, our goal is to make vehicle
+        ownership seamless, reliable, and satisfying.
+      </p>
+      <p>
+        With our trusted sourcing network in the U.S., Europe, and UAE, we
+        guarantee authenticity, transparency, and customer satisfaction at every
+        stage.
+      </p>
+    </div>
+    <div class="whoo">
+      <img
+        src="{% static 'img/main-car1.jpg' %}"
+        class="rounded-2xl shadow-lg"
+        alt="Zac Motors Showroom"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ========================= MISSION, VISION & VALUES ========================= -->
+<section class="mission">
+  <div class="miss-con">
+    <h2>Our Mission, Vision & Values</h2>
+    <div class="inner-miss">
+      <div class="inn-con">
+        <i class="fa-solid fa-bullseye text-4xl mb-4"></i>
+        <h3>Our Mission</h3>
+        <p>
+          To make vehicle acquisition seamless, transparent, and affordable
+          while upholding global standards of customer service.
+        </p>
+      </div>
+
+      <div class="inn-con">
+        <i class="fa-solid fa-eye text-4xl mb-4"></i>
+        <h3>Our Vision</h3>
+        <p>
+          To become Africa’s most trusted and innovative auto dealership with a
+          global sourcing network.
+        </p>
+      </div>
+
+      <div class="inn-con">
+        <i class="fa-solid fa-gem text-4xl mb-4"></i>
+        <h3>Our Values</h3>
+        <p>
+          Integrity, transparency, customer care, quality assurance, and
+          long-term partnership.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= WHY CHOOSE US ========================= -->
+<section class="choose">
+  <h2>Why Choose Zac Motors?</h2>
+  <div class="choose-con">
+    <div class="inner-choose">
+      <i class="fa-solid fa-shield-halved text-4xl mb-4"></i>
+      <h3>Verified & Trusted</h3>
+      <p>
+        All vehicles are inspected, verified, and sourced from reputable
+        international dealerships.
+      </p>
+    </div>
+
+    <div class="inner-choose">
+      <i class="fa-solid fa-car-on text-4xl mb-4"></i>
+      <h3>Wide Vehicle Options</h3>
+      <p>
+        Choose from brand-new cars, foreign-used selections, SUVs, sedans,
+        luxury rides, and more.
+      </p>
+    </div>
+
+    <div class="inner-choose">
+      <i class="fa-solid fa-handshake-angle text-4xl mb-4"></i>
+      <h3>Customer-First Approach</h3>
+      <p>
+        We provide guidance, transparency, and full support throughout your car
+        buying journey.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= OUR SERVICES ========================= -->
+<section class="our-serv">
+  <div class="serv-con">
+    <h2>Our Core Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fa-solid fa-car-side text-4xl mb-4"></i>
+        <h3>Brand-New Cars</h3>
+        <p>
+          Sourcing and sales of premium brand-new vehicles from trusted global
+          manufacturers.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-tags text-4xl mb-4"></i>
+        <h3>Affordable Used Cars</h3>
+        <p>
+          Carefully selected foreign-used cars with verified documentation and
+          inspection.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-plane-arrival text-4xl mb-4"></i>
+        <h3>Vehicle Importation</h3>
+        <p>
+          Direct importation from USA, Europe, and UAE with safe shipping
+          handling.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-people-carry-box text-4xl mb-4"></i>
+        <h3>Corporate Partnership</h3>
+        <p>
+          Auto financing, corporate fleet sourcing, and long-term vehicle
+          partnership programs.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= GOALS ========================= -->
+<section class="sec-goal">
+  <div class="goal-con">
+    <div class="inner-goal">
+      <h2>Our Goals</h2>
+      <p>
+        We aim to build long-lasting trust with individuals, businesses, and
+        corporate bodies by maintaining high standards of transparency,
+        integrity, and efficiency in all our dealings.
+      </p>
+      <ul>
+        <li>Deliver high-quality vehicles at competitive prices</li>
+        <li>Expand our sourcing network globally</li>
+        <li>Strengthen our corporate and financing partnerships</li>
+        <li>Provide unmatched customer service</li>
+      </ul>
+    </div>
+    <div class="goals">
+      <img
+        src="{% static 'img/alex-haney-VQ.jpg' %}"
+        class="rounded-2xl shadow-lg"
+        alt="Company Goals"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CTA ========================= -->
+<section class="cta">
+  <h2>Ready to Get Your Next Car?</h2>
+  <p>
+    Contact us today and experience a seamless, transparent car buying process.
+  </p>
+  <a href="{% url 'contact' %}" class="px-8 py-3 font-semibold rounded-xl">
+    Contact Us
+  </a>
+</section>
+
+{% endblock %}

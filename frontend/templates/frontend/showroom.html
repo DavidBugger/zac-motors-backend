@@ -1,0 +1,148 @@
+{% extends "frontend/base.html" %} {% load static %} {% block title %}Car
+Details | Zac Motors{% endblock %} {% block content %}
+
+<section class="details-container">
+  <div>
+    <div class="main-img">
+      <img id="main-img" src="" alt="" />
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <h1 id="car-name"></h1>
+    <p><i class="fa-solid fa-location-dot"></i> Lagos, Nigeria</p>
+
+    <div class="specs-box">
+      <h3>Specifications</h3>
+      <div class="specs-grid">
+        <div class="spec"><b>Year:</b> <span id="year"></span></div>
+        <div class="spec"><b>Mileage:</b> <span id="mileage"></span></div>
+        <div class="spec"><b>Fuel:</b> <span id="fuel"></span></div>
+        <div class="spec">
+          <b>Transmission:</b> <span id="transmission"></span>
+        </div>
+        <div class="spec"><b>Color:</b> <span id="color"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="price-box">
+    <h2 id="car-price"></h2>
+    <a id="whatsapp-btn" class="btn whatsapp">Chat on WhatsApp</a>
+    <a href="tel:+2348030535894" class="btn call">Call Seller</a>
+  </div>
+</section>
+
+<section class="car-details-section">
+  <h2 class="details-title">Details</h2>
+
+  <div class="overview-box">
+    <h3 class="section-heading">Overview</h3>
+
+    <div class="overview-icons">
+      <div class="icon-item">
+        <i class="ri-roadster-line"></i>
+        <span>SUV</span>
+      </div>
+      <div class="icon-item">
+        <i class="ri-gas-station-line"></i>
+        <span>Petrol</span>
+      </div>
+      <div class="icon-item">
+        <i class="ri-settings-5-line"></i>
+        <span>Automatic</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="general-info">
+    <h3 class="section-heading">General Information</h3>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Make</span>
+        <span class="value">Toyota</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Model</span>
+        <span class="value">Camry</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Year</span>
+        <span class="value">2023</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Color</span>
+        <span class="value">Black</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Condition</span>
+        <span class="value">Local Used</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Mileage</span>
+        <span class="value">182,592</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Engine Size</span>
+        <span class="value">2700</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Registration</span>
+        <span class="value">Registered</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Imported</span>
+        <span class="value">No</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const car = cars[id];
+
+  if (!car) {
+    document.body.innerHTML = "<h2>Car not found</h2>";
+    throw new Error("Car not found");
+  }
+
+  document.getElementById("car-name").innerText = car.name;
+  document.getElementById("car-price").innerText = "₦" + car.price;
+  document.getElementById("year").innerText = car.year;
+  document.getElementById("mileage").innerText = car.mileage;
+  document.getElementById("fuel").innerText = car.fuel;
+  document.getElementById("transmission").innerText = car.transmission;
+  document.getElementById("color").innerText = car.color;
+
+  const mainImg = document.getElementById("main-img");
+  const gallery = document.getElementById("gallery");
+  mainImg.src = car.images[0];
+
+  car.images.forEach((img) => {
+    const thumb = document.createElement("img");
+    thumb.src = img;
+    thumb.onclick = () => {
+      mainImg.src = img;
+    };
+    gallery.appendChild(thumb);
+  });
+
+  document.getElementById(
+    "whatsapp-btn"
+  ).href = `https://wa.me/2348030535894?text=Hello, I'm interested in the ${car.name}`;
+</script>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% load static %}
+<nav class="navbar">
+  <div class="logo">
+    <button>
+      <img src="{% static 'img/Zac-logo (2).png' %}" alt="Zac Motors Logo" />
+    </button>
+  </div>
+  <button class="toggle" id="nav-toggle">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="menu">
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About Us</a></li>
+      <li><a href="{% url 'buy' %}">Car Brands</a></li>
+      <li><a href="{% url 'dealerships' %}">Dealership</a></li>
+      <li><a href="{% url 'contact' %}">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="anchor">
+    <a href="{% url 'showroom' %}">Buy a Car</a>
+  </div>
+</nav>

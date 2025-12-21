@@ -1,0 +1,90 @@
+{% extends 'frontend/base.html' %} {% load static %} {% block title %}Car
+Brands{% endblock %} {% block content %}
+
+<!-- HERO -->
+<div class="next">
+  <div class="hero-wrap">
+    <img src="{% static 'img/bmw collage.jpg' %}" alt="" />
+  </div>
+</div>
+
+<!-- CAR SLIDER -->
+<section class="car-slider-section">
+  <h2 class="slider-title">“Your Trusted Road Partner”</h2>
+
+  <div class="slider-wrapper">
+    <button class="slider-btn left" id="slideLeft">&#10094;</button>
+
+    <div class="slider" id="carSlider">
+      <div class="slide-card">
+        <img src="{% static 'img/mercedes-47.jpg' %}" alt="Car 1" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/main-car1.jpg' %}" alt="Car 2" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/nejc-soklic.jpg' %}" alt="Car 3" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/main-car9.jpg' %}" alt="Car 4" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/valery-fedotov.jpg' %}" alt="Car 5" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/main-car4.jpg' %}" alt="Car 6" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/benz c300.jpg' %}" alt="Car 7" />
+      </div>
+      <div class="slide-card">
+        <img src="{% static 'img/camry.jpg' %}" alt="Car 8" />
+      </div>
+    </div>
+
+    <button class="slider-btn right" id="slideRight">&#10095;</button>
+  </div>
+</section>
+
+<!-- DEAL OF THE WEEK -->
+<section class="lease-section">
+  <div class="luxury">
+    <h2>Amazing deal of the week</h2>
+    <p>Get a 19.9% discount on any of these cars</p>
+  </div>
+
+  <div class="luxury-grid-section">
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/benz c300.jpg' %}" alt="" />
+      </div>
+      <h3>Mercedes Benz 4Matic C300</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Black • 2023</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="tel:+2348030535894" class="call-btn">Buy</a>
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
+      </div>
+    </div>
+
+    <!-- Duplicate card — later we will make this dynamic from database -->
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/benz c300.jpg' %}" alt="" />
+      </div>
+      <h3>Mercedes Benz 4Matic C300</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Black • 2023</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="tel:+2348030535894" class="call-btn">Buy</a>
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

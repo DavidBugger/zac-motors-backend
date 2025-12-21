@@ -1,7 +1,155 @@
 {% include 'frontend/base.html' %}
-
+{% load static %} 
 {% block content %}
-<h1>Welcome to Zac Motors</h1>
-<!-- Your home page content -->
- 
-{% endblock %}
+<!-- HERO SLIDER -->
+<section class="hero-slider">
+  <div class="slide active" style="background-image: url('{% static "img/devon-janse.jpg" %}')">
+    <div class="slide-content">
+      <h1>Experience Refined Luxury</h1>
+      <p>Choose from Nigeria’s finest selection...</p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image: url('{% static "img/rolls-royce-white.jpg" %}')">
+    <div class="slide-content">
+      <h1>Driving Excellence, One Car at a Time</h1>
+      <p>At Zac Motors, we believe owning a car...</p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image: url('{% static "img/jaguar-white.jpg" %}')">
+    <div class="slide-content">
+      <h1>Redefining the Future of Driving</h1>
+      <p>Zac Motors combines technology...</p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image: url('{% static "img/vadym-kudriavtsev.jpg" %}')">
+    <div class="slide-content">
+      <h1>Your Journey Begins with Zac Motors</h1>
+      <p>Whether you’re buying, renting, or upgrading...</p>
+    </div>
+  </div>
+
+  <div class="zac-btn-container">
+    <a href="{% url 'showroom' %}" class="zac-btn">Explore More</a>
+  </div>
+
+  <div class="slider-nav">
+    <span class="nav-dot active"></span>
+    <span class="nav-dot"></span>
+    <span class="nav-dot"></span>
+    <span class="nav-dot"></span>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-box">
+  <select>
+    <option>Select Brand</option>
+    <option>BMW</option>
+    <option>Toyota</option>
+    <option>Mercedes Benz</option>
+  </select>
+
+  <select>
+    <option>Select Model</option>
+    <option>2024</option>
+    <option>2023</option>
+  </select>
+
+  <select>
+    <option>Select Location</option>
+    <option>Lagos</option>
+    <option>Abuja</option>
+  </select>
+
+  <select>
+    <option>Select Type of Car</option>
+    <option>Sports</option>
+    <option>SUV</option>
+    <option>Truck</option>
+  </select>
+
+  <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+</section>
+
+<!-- FLEET -->
+<section class="fleet-section">
+  <div class="fleet-con">
+    <div class="luxury-flt">
+      <h2>Our Luxury Fleet</h2>
+      <p>Discover our exclusive collection...</p>
+    </div>
+
+    <div class="fleet-grid">
+      <div class="car-card">
+        <div class="car-img">
+          <img src="{% static 'img/benz c300.jpg' %}" alt="">
+        </div>
+        <div class="car-content">
+          <h3 class="car-title">Mercedes 4Matic C300</h3>
+          <p class="car-year">2023 Model</p>
+          <ul class="car-features">
+            <li>Full Screen</li>
+            <li>360 Camera</li>
+            <li>All Wheel Drive</li>
+          </ul>
+          <div class="btn-btn">
+            <a href="{% url 'buy' %}" class="car-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-img">
+          <img src="{% static 'img/accord.jpg' %}" alt="">
+        </div>
+        <div class="car-content">
+          <h3 class="car-title">Honda Accord</h3>
+          <p class="car-year">2024 Model</p>
+          <ul class="car-features">
+            <li>Hybrid / EV</li>
+            <li>EXL Edition</li>
+            <li>Sun Roof</li>
+          </ul>
+          <div class="btn-btn">
+            <a href="{% url 'buy' %}" class="car-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-img">
+          <img src="{% static 'img/camry.jpg' %}" alt="">
+        </div>
+        <div class="car-content">
+          <h3 class="car-title">Toyota Camry SE</h3>
+          <p class="car-year">2022 Model</p>
+          <ul class="car-features">
+            <li>Thumb Start</li>
+            <li>Radar Sensors</li>
+            <li>360 Camera</li>
+          </ul>
+          <div class="btn-btn">
+            <a href="{% url 'buy' %}" class="car-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>We offer a wide range of exotic cars...</p>
+    <a href="{% url 'showroom' %}" style="color:#0a1d3c;font-weight:bold;">View Full Fleet →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="test-grid">
+    <div class="test-card">
+      <p>“Zac Motors made my car purchase smooth...”</p>
+      <h4>- David O.</h4>
+    </div>
+
+    {% endblock content %}
