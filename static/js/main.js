@@ -44,8 +44,6 @@ points.forEach((dot, i) => {
 });
 
 setInterval(nextSlide, 5000); // Auto-slide every 5s
-
-setInterval(autoSlide, 5000);
 // ==================================================
 // ===== CAR IMAGE SLIDER BUTTONS =====
 const slider = document.getElementById("carSlider");

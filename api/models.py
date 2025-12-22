@@ -1,5 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+import os
+
+
+def car_image_upload_path(instance, filename):
+    return os.path.join('cars', str(instance.year), instance.make.lower(), filename)
+
 
 class Car(models.Model):
     CONDITION_CHOICES = [
@@ -17,6 +23,7 @@ class Car(models.Model):
     description = models.TextField(blank=True)
     vin = models.CharField(max_length=17, unique=True)
     is_available = models.BooleanField(default=True)
+    image = models.ImageField(upload_to=car_image_upload_path, null=True, blank=True, help_text='Upload an image of the car')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

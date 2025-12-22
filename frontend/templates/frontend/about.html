@@ -1,7 +1,8 @@
 {% extends 'frontend/base.html' %} {% load static %} {% block title %}ZacMotors
 – Company Profile{% endblock %} {% block content %}
 <!-- ====================== HERO SECTION ====================== -->
-<section class="abt-section">
+{% load static %}
+<section class="abt-section" style="--about-bg-image: url('{% static 'img/BMW-MY25.avif' %}')">
   <h1>Your Trusted Car Partner</h1>
   <p>
     We're passionate about making car ownership easy and transparent, delivering
