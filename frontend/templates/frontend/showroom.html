@@ -1,148 +1,624 @@
-{% extends "frontend/base.html" %} {% load static %} {% block title %}Car
-Details | Zac Motors{% endblock %} {% block content %}
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Showroom | Zac Motors{% endblock %}
 
-<section class="details-container">
-  <div>
-    <div class="main-img">
-      <img id="main-img" src="" alt="" />
-    </div>
+{% block content %}
+<style>
+.showroom-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
 
-    <div class="gallery" id="gallery"></div>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-    <h1 id="car-name"></h1>
-    <p><i class="fa-solid fa-location-dot"></i> Lagos, Nigeria</p>
+h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a365d;
+}
 
-    <div class="specs-box">
-      <h3>Specifications</h3>
-      <div class="specs-grid">
-        <div class="spec"><b>Year:</b> <span id="year"></span></div>
-        <div class="spec"><b>Mileage:</b> <span id="mileage"></span></div>
-        <div class="spec"><b>Fuel:</b> <span id="fuel"></span></div>
-        <div class="spec">
-          <b>Transmission:</b> <span id="transmission"></span>
+.showroom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.car-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.car-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+    color: white;
+}
+
+.available {
+    background-color: #10b981;
+}
+
+.sold {
+    background-color: #ef4444;
+}
+
+.car-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.car-card:hover .car-image img {
+    transform: scale(1.05);
+}
+
+.car-details {
+    padding: 1.5rem;
+}
+
+.car-header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.car-header h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+    color: #1a365d;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 0;
+}
+
+.car-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.spec-item i {
+    color: #6b7280;
+    width: 20px;
+    text-align: center;
+}
+
+.car-condition {
+    margin: 1rem 0;
+}
+
+.condition {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.condition.new {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.condition.used {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+.car-description {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.car-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.btn i {
+    margin-right: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    flex: 2;
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    flex: 1;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .showroom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .car-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Loading and error states */
+.no-cars, .error {
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 2rem;
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+.error {
+    color: #dc2626;
+}
+
+/* modal */
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+    padding: 2rem 0;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 2rem auto;
+    max-width: 900px;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    background: #1a365d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.car-gallery {
+    position: relative;
+}
+
+.main-image {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.price-section h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #2563eb;
+}
+
+.status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.spec-item i {
+    font-size: 1.2rem;
+    color: #4b5563;
+    width: 24px;
+    text-align: center;
+}
+
+.spec-item .label {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 0.2rem;
+}
+
+.spec-item .value {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.description {
+    margin: 2rem 0;
+}
+
+.description h4 {
+    margin: 0 0 1rem;
+    color: #1a365d;
+    font-size: 1.2rem;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    flex: 1;
+    text-align: center;
+}
+
+.btn i {
+    margin-right: 0.5rem;
+}
+
+.btn-call {
+    background-color: #2563eb;
+    color: white;
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+}
+
+.btn-call:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+</style>
+<section class="showroom-section mt-5">
+    <div class="container">
+        <h1>Our Showroom</h1>
+        <div class="showroom-grid" id="cars-container">
+            <!-- Cars will be loaded here by JavaScript -->
         </div>
-        <div class="spec"><b>Color:</b> <span id="color"></span></div>
-      </div>
     </div>
-  </div>
-
-  <div class="price-box">
-    <h2 id="car-price"></h2>
-    <a id="whatsapp-btn" class="btn whatsapp">Chat on WhatsApp</a>
-    <a href="tel:+2348030535894" class="btn call">Call Seller</a>
-  </div>
 </section>
-
-<section class="car-details-section">
-  <h2 class="details-title">Details</h2>
-
-  <div class="overview-box">
-    <h3 class="section-heading">Overview</h3>
-
-    <div class="overview-icons">
-      <div class="icon-item">
-        <i class="ri-roadster-line"></i>
-        <span>SUV</span>
-      </div>
-      <div class="icon-item">
-        <i class="ri-gas-station-line"></i>
-        <span>Petrol</span>
-      </div>
-      <div class="icon-item">
-        <i class="ri-settings-5-line"></i>
-        <span>Automatic</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="general-info">
-    <h3 class="section-heading">General Information</h3>
-
-    <div class="info-grid">
-      <div class="info-item">
-        <span class="label">Make</span>
-        <span class="value">Toyota</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Model</span>
-        <span class="value">Camry</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Year</span>
-        <span class="value">2023</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Color</span>
-        <span class="value">Black</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Condition</span>
-        <span class="value">Local Used</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Mileage</span>
-        <span class="value">182,592</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Engine Size</span>
-        <span class="value">2700</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Registration</span>
-        <span class="value">Registered</span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">Imported</span>
-        <span class="value">No</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script src="{% static 'js/main.js' %}"></script>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const car = cars[id];
+document.addEventListener('DOMContentLoaded', function() {
+    const carsContainer = document.getElementById('cars-container');
+    const apiUrl = 'http://127.0.0.1:8000/api/cars/';
 
-  if (!car) {
-    document.body.innerHTML = "<h2>Car not found</h2>";
-    throw new Error("Car not found");
-  }
+    // Function to fetch cars from API
+    async function fetchCars() {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            
+            if (data.results && data.results.length > 0) {
+                displayCars(data.results);
+            } else {
+                carsContainer.innerHTML = '<p class="no-cars">No cars available at the moment.</p>';
+            }
+        } catch (error) {
+            console.error('Error fetching cars:', error);
+            carsContainer.innerHTML = '<p class="error">Error loading cars. Please try again later.</p>';
+        }
+    }
 
-  document.getElementById("car-name").innerText = car.name;
-  document.getElementById("car-price").innerText = "₦" + car.price;
-  document.getElementById("year").innerText = car.year;
-  document.getElementById("mileage").innerText = car.mileage;
-  document.getElementById("fuel").innerText = car.fuel;
-  document.getElementById("transmission").innerText = car.transmission;
-  document.getElementById("color").innerText = car.color;
+    // Function to display cars in the grid
+    function displayCars(cars) {
+        carsContainer.innerHTML = cars.map(car => `
+            <div class="car-card">
+                <div class="car-badge ${car.is_available ? 'available' : 'sold'}">
+                    ${car.is_available ? 'Available' : 'Sold'}
+                </div>
+                <div class="car-image">
+                    <img src="${car.image}" alt="${car.make} ${car.model}" 
+                         onerror="this.src='{% static 'images/placeholder-car.jpg' %}'">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3>${car.year} ${car.make} ${car.model}</h3>
+                        <p class="price">₦${parseFloat(car.price).toLocaleString()}</p>
+                    </div>
+                    
+                    <div class="car-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>${car.mileage.toLocaleString()} km</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>${car.color}</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-hashtag"></i>
+                            <span>${car.vin}</span>
+                        </div>
+                    </div>
 
-  const mainImg = document.getElementById("main-img");
-  const gallery = document.getElementById("gallery");
-  mainImg.src = car.images[0];
+                    <div class="car-condition">
+                        <span class="condition ${car.condition}">
+                            ${car.condition.charAt(0).toUpperCase() + car.condition.slice(1)}
+                        </span>
+                    </div>
 
-  car.images.forEach((img) => {
-    const thumb = document.createElement("img");
-    thumb.src = img;
-    thumb.onclick = () => {
-      mainImg.src = img;
-    };
-    gallery.appendChild(thumb);
-  });
+                    <p class="car-description">${car.description}</p>
 
-  document.getElementById(
-    "whatsapp-btn"
-  ).href = `https://wa.me/2348030535894?text=Hello, I'm interested in the ${car.name}`;
+                    <div class="car-actions">
+                        <button class="btn btn-primary" onclick="openCarModal(${JSON.stringify(car).replace(/"/g, '&quot;')})">
+                            View Details
+                        </button>
+                        <a href="https://wa.me/2348030535894?text=I'm interested in the ${car.year} ${car.make} ${car.model}" 
+                           class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Initial fetch
+    fetchCars();
+});
+
+function openCarModal(car) {
+    const modal = document.getElementById('carModal');
+    const modalContent = document.getElementById('modalContent');
+    
+    // Create modal content
+    modalContent.innerHTML = `
+        <div class="modal-header">
+            <h2>${car.year} ${car.make} ${car.model}</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="car-gallery">
+                <div class="main-image">
+                    <img src="${car.image}" alt="${car.make} ${car.model}">
+                </div>
+            </div>
+            <div class="car-details">
+                <div class="price-section">
+                    <h3>₦${parseFloat(car.price).toLocaleString()}</h3>
+                    <span class="status ${car.is_available ? 'available' : 'sold'}">
+                        ${car.is_available ? 'Available' : 'Sold'}
+                    </span>
+                </div>
+                
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <span class="label">Year</span>
+                            <span class="value">${car.year}</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div>
+                            <span class="label">Mileage</span>
+                            <span class="value">${car.mileage.toLocaleString()} km</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <div>
+                            <span class="label">Color</span>
+                            <span class="value">${car.color}</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-hashtag"></i>
+                        <div>
+                            <span class="label">VIN</span>
+                            <span class="value">${car.vin}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <h4>Description</h4>
+                    <p>${car.description || 'No description available.'}</p>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="tel:+2348030535894" class="btn btn-call">
+                        <i class="fas fa-phone"></i> Call Seller
+                    </a>
+                    <a href="https://wa.me/2348030535894?text=I'm interested in the ${car.year} ${car.make} ${car.model} (VIN: ${car.vin})" 
+                       class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+}
+
+// Add this to close the modal
+function closeModal() {
+    const modal = document.getElementById('carModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the content
+window.onclick = function(event) {
+    const modal = document.getElementById('carModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
 </script>
+<!-- Car Details Modal -->
+<div id="carModal" class="modal">
+    <div id="modalContent" class="modal-content"></div>
+</div>
 
 {% endblock %}

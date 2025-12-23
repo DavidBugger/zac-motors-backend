@@ -58,7 +58,7 @@ body {
 }
 
 .navbar.scrolled ul li a {
-  color: #ff7f11;
+  color: whitesmoke;
 }
 
 .navbar.scrolled ul li a:hover {
@@ -169,11 +169,11 @@ body {
   }
   .menu ul li {
     font-size: 14px;
-    color: #0a1d3c; /* Smaller font for better fit */
+    color: #0a1d3c !important; /* Smaller font for better fit */
   }
 
   .menu ul li a {
-    color: #0a1d3c;
+    color: #0a1d3c !important;
     font-size: 15px;
     font-weight: 700;
   }
@@ -969,7 +969,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding: 0 200px;
-  background-image: url("/django-with-devdave/CAPSTONE PROJECT/frontend/assets/img/ranamotorworks.jpg");
+  background-image: url('../img/ranamotorworks.jpg');
   background-size: cover;
   background-position: center center;
   border-radius: 10px;

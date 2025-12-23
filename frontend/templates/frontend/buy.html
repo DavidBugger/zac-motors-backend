@@ -1,8 +1,5 @@
-{% extends 'frontend/base.html' %} 
-{% load static %} 
-{% block title %}Car
-Brands{% endblock %} 
-{% block content %}
+{% extends 'frontend/base.html' %} {% load static %} {% block title %}Car
+Brands{% endblock %} {% block content %}
 
 <!-- HERO -->
 <div class="next">
@@ -86,6 +83,191 @@ Brands{% endblock %}
         <a href="tel:+2348030535894" class="call-btn">Buy</a>
         <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/benz c300.jpg' %}" alt="" />
+      </div>
+      <h3>Mercedes Benz 4Matic C300</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Black • 2023</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="tel:+2348030535894" class="call-btn">Buy</a>
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
+      </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/accord.jpg' %}" alt="" />
+      </div>
+      <h3>Honda Accord</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Grey • 2024</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="+234 8030535894" class="call-btn">Buy</a>
+        <a href="showroom.html?id=accord-2024" class="whatsapp-btn"
+          >View More</a
+        >
+      </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/accord.jpg' %}" alt="" />
+      </div>
+      <h3>Honda Accord</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Grey • 2024</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="+234 8030535894" class="call-btn">Buy</a>
+        <a href="showroom.html?id=accord-2024" class="whatsapp-btn"
+          >View More</a
+        >
+      </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/accord.jpg' %}" alt="" />
+      </div>
+      <h3>Honda Accord</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Grey • 2024</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="+234 8030535894" class="call-btn">Buy</a>
+        <a href="showroom.html?id=accord-2024" class="whatsapp-btn"
+          >View More</a
+        >
+      </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/camry.jpg' %}" alt="" />
+      </div>
+      <h3>Toyota Camry SE</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Blue • 2022</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="+234 8030535894" class="call-btn">Buy</a>
+        <a href="showroom.html?id=camry-2022" class="whatsapp-btn">View More</a>
+      </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/camry.jpg' %}" alt="" />
+      </div>
+      <h3>Toyota Camry SE</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Blue • 2022</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="+234 8030535894" class="call-btn">Buy</a>
+        <a href="showroom.html?id=camry-2022" class="whatsapp-btn">View More</a>
+      </div>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-img">
+        <span class="tag-new">New</span>
+        <img src="{% static 'img/camry.jpg' %}" alt="" />
+      </div>
+      <h3>Toyota Camry SE</h3>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Blue • 2022</p>
+      <p class="lux-price">#49,950.00</p>
+
+      <div class="car-actions">
+        <a href="+234 8030535894" class="call-btn">Buy</a>
+        <a href="showroom.html?id=camry-2022" class="whatsapp-btn">View More</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================================== -->
+
+<section class="appointment-section">
+  <div class="appointment-wrapper">
+    <!-- LEFT ILLUSTRATION -->
+    <div class="appointment-illustration">
+      <img src="{% static 'img/bmw-collage.jpg' %}" alt="Zac Motors Illustration" />
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="appointment-form">
+      <h2>Book an Appointment Online!</h2>
+      <p class="subtext">
+        Meet with our certified automobile experts. Quality service,
+        transparency, and professionalism — the Zac Motors standard.
+      </p>
+
+      <form action="#" method="post">
+        <div class="form-group">
+          <div class="field">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Doe" />
+          </div>
+
+          <div class="field">
+            <label>Service Type</label>
+            <select>
+              <option>Choose a service</option>
+              <option>Buy a Car</option>
+              <option>Book to Inspect</option>
+              <option>Vehicle Sourcing</option>
+              <option>Corporate Fleet Service</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field">
+            <label>Preferred Date</label>
+            <input type="date" />
+          </div>
+
+          <div class="field">
+            <label>Preferred Time</label>
+            <input type="time" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" placeholder="example@mail.com" />
+          </div>
+
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="text" placeholder="08000000000" />
+          </div>
+        </div>
+
+        <div class="textarea-block">
+          <label>Your Message</label>
+          <textarea placeholder="Please describe your request..."></textarea>
+        </div>
+
+        <div class="agree-box">
+          <input type="checkbox" /> I agree to Zac Motors policy terms.
+        </div>
+
+        <button class="submit-btn">Submit</button>
+      </form>
     </div>
   </div>
 </section>

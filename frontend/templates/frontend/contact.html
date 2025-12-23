@@ -1,7 +1,248 @@
-{% include 'frontend/base.html' %}
-{% load static %}
-{% block title %}Contact{% endblock %}
+
+
+
+{% extends 'frontend/base.html' %} 
+{% load static %} 
+{% block title %}Contact-us{% endblock %} 
 {% block content %}
+<style>
+    
+      /* Contact Section Styling */
+      .contact {
+        width: 100vw; /* Full viewport width */
+        height: 600px; /* Fixed height for the background; adjust as needed */
+        margin: 0; /* Remove default margins for full width */
+        background-image: url('{% static 'img/benz-min.jpg' %}') !important; /* Set the image as background */
+        background-size: cover; /* Scales to cover the area without distortion */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents tiling */
+        position: relative; /* For potential overlays or positioning */
+      }
+      /* Touch Section (Heading and Description) */
+      .touch {
+        padding: 20px;
+        text-align: center;
+        background-color: #f9f9f9; /* Subtle background for separation */
+        margin-bottom: 40px;
+      }
+
+      .touch h2 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .touch .description {
+        max-width: 600px;
+        margin: 0 auto 20px;
+        color: var(--light-gray);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      /* Main Container (Map and Form) */
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Map Container */
+      .map-container {
+        flex: 1 1 400px;
+        min-width: 300px;
+        height: 500px;
+        border-radius: 8px;
+        overflow: hidden; /* Ensures rounded corners on iframe */
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      /* Form Styling */
+      form {
+        flex: 1 1 400px;
+        min-width: 300px;
+        /* background: #fff; */
+        padding: 24px 32px;
+        box-shadow: var(--shadow);
+        border-radius: 8px;
+      }
+
+      form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--text-color);
+        font-size: 14px;
+      }
+
+      form input[type="text"],
+      form input[type="email"],
+      form input[type="tel"],
+      form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        border-radius: 4px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        font-family: inherit; /* Matches page font */
+      }
+
+      form input[type="text"]:focus,
+      form input[type="email"]:focus,
+      form input[type="tel"]:focus,
+      form textarea:focus {
+        border-color: var(--accent-color);
+        outline: none;
+        box-shadow: 0 0 5px rgba(255, 127, 17, 0.5); /* Subtle glow */
+      }
+
+      form textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        background-color: var(--accent-color);
+        color: white;
+        font-weight: 600;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        width: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .submit-btn:hover,
+      .submit-btn:focus {
+        background-color: var(--primary-color);
+        transform: translateY(-2px); /* Subtle lift effect */
+      }
+      /* Media Queries for Mobile and Tablet */
+
+      /* Mobile (up to 768px) */
+      @media (max-width: 768px) {
+        .contact {
+          height: 400px; /* Reduce height for smaller screens */
+        }
+
+        .touch {
+          padding: 15px; /* Reduce padding */
+          margin-bottom: 20px; /* Reduce margin */
+        }
+
+        .touch h2 {
+          font-size: 2rem; /* Smaller heading for mobile */
+          margin-bottom: 8px;
+        }
+
+        .touch .description {
+          font-size: 14px; /* Smaller font size */
+          line-height: 1.5;
+        }
+
+        .container {
+          flex-direction: column; /* Stack map and form vertically */
+          gap: 20px; /* Reduce gap */
+          padding: 0 10px; /* Reduce padding */
+        }
+
+        .map-container {
+          flex: 1 1 auto; /* Allow full width */
+          min-width: 100%; /* Full width on mobile */
+          height: 300px; /* Reduce height for mobile */
+        }
+
+        form {
+          flex: 1 1 auto; /* Allow full width */
+          min-width: 100%; /* Full width on mobile */
+          padding: 20px; /* Reduce padding */
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"],
+        form textarea {
+          padding: 10px; /* Reduce padding */
+          margin-bottom: 15px; /* Reduce margin */
+          font-size: 13px; /* Smaller font */
+        }
+
+        form textarea {
+          min-height: 100px; /* Reduce min-height */
+        }
+
+        .submit-btn {
+          padding: 10px; /* Reduce padding */
+          font-size: 15px; /* Smaller font */
+        }
+      }
+
+      /* Tablet (769px to 1024px) */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .contact {
+          height: 500px; /* Slightly reduce height for tablets */
+        }
+
+        .touch {
+          padding: 18px; /* Slight reduction in padding */
+          margin-bottom: 30px; /* Slight reduction in margin */
+        }
+
+        .touch h2 {
+          font-size: 2.2rem; /* Slightly smaller heading */
+        }
+
+        .touch .description {
+          font-size: 15px; /* Slightly smaller font */
+        }
+
+        .container {
+          gap: 30px; /* Reduce gap slightly */
+          padding: 0 15px; /* Reduce padding */
+        }
+
+        .map-container {
+          height: 350px; /* Reduce height for tablets */
+        }
+
+        form {
+          padding: 22px 28px; /* Reduce padding slightly */
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"],
+        form textarea {
+          padding: 11px; /* Slight reduction */
+          margin-bottom: 18px; /* Slight reduction */
+        }
+
+        form textarea {
+          min-height: 110px; /* Slight reduction */
+        }
+
+        .submit-btn {
+          padding: 11px; /* Slight reduction */
+          font-size: 15px; /* Slight reduction */
+        }
+      }
+</style>
 
 <!-- CONTACT HERO -->
 <section class="contact" style="background-image: url('{% static 'img/contact.jpg' %}')">
