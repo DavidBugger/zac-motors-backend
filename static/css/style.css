@@ -969,7 +969,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding: 0 200px;
-  background-image: url('../img/ranamotorworks.jpg');
+  background-image: url("../img/ranamotorworks.jpg");
   background-size: cover;
   background-position: center center;
   border-radius: 10px;
@@ -1652,7 +1652,7 @@ body {
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .stat-box h3 {
@@ -1678,7 +1678,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -1687,7 +1687,7 @@ body {
 
 .service-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .service-item h4 {
@@ -1720,12 +1720,13 @@ body {
   .multi h1 {
     font-size: 2.2rem;
   }
-  
+
   .services-section {
     flex-direction: column;
   }
-  
-  .services-left, .services-card {
+
+  .services-left,
+  .services-card {
     width: 100%;
   }
 }
@@ -3637,6 +3638,10 @@ form {
 .luxury-grid-section {
   max-width: 1200px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
 .luxury-container {
@@ -4168,8 +4173,7 @@ hr {
 /* Left side text block */
 .left-block {
   position: relative;
-  background: url("/django-with-devdave/CAPSTONE PROJECT/frontend/assets/img/main-car4.jpg")
-    no-repeat center center/cover;
+  background: var(--left-bg-image) no-repeat center center/cover;
   background-color: rgba(10, 29, 60, 0.45);
   background-blend-mode: multiply;
   padding: 3rem 2rem 3rem 3rem;

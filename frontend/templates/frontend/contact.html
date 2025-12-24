@@ -36,7 +36,7 @@
       .touch .description {
         max-width: 600px;
         margin: 0 auto 20px;
-        color: var(--light-gray);
+        color: #777;
         font-size: 16px;
         line-height: 1.6;
       }
@@ -116,8 +116,8 @@
       }
 
       .submit-btn {
-        background-color: var(--accent-color);
-        color: white;
+        background-color: #ff7f11;
+        color: #0a1d3c;
         font-weight: 600;
         padding: 12px;
         font-size: 16px;
@@ -130,7 +130,8 @@
 
       .submit-btn:hover,
       .submit-btn:focus {
-        background-color: var(--primary-color);
+        background-color: #0a1d3c;
+        color: #fff;
         transform: translateY(-2px); /* Subtle lift effect */
       }
       /* Media Queries for Mobile and Tablet */
@@ -245,11 +246,11 @@
 </style>
 
 <!-- CONTACT HERO -->
-<section class="contact" style="background-image: url('{% static 'img/contact.jpg' %}')">
+<!-- <section class="contact" style="background-image: url('{% static 'img/contact.jpg' %}')"> -->
 </section>
 
 <!-- Address -->
-<section class="address" style="--contact-bg-image: url('{% static 'img/cars-collage.jpg' %}')">
+<section class="address" style="--contact-bg-image: url('{% static 'img/collage.jpg' %}')">
     <h1>Our Address</h1>
     <div class="address-block">
         <div class="address-header">SHOW ROOM</div>
@@ -306,7 +307,7 @@
 </section>
 
 <!-- Thank You -->
-<section class="thanks">
+<section class="thanks" style="--left-bg-image: url('{% static 'img/main-car4.jpg' %}')">
     <div class="left-block">
         <h2>Thank You</h2>
         <p>Keep in Touch with Us</p>

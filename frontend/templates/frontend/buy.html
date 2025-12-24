@@ -4,7 +4,7 @@ Brands{% endblock %} {% block content %}
 <!-- HERO -->
 <div class="next">
   <div class="hero-wrap">
-    <img src="{% static 'img/bmw collage.jpg' %}" alt="" />
+    <img src="{% static 'img/bmw-collage.jpg' %}" alt="" />
   </div>
 </div>
 
@@ -111,9 +111,7 @@ Brands{% endblock %} {% block content %}
 
       <div class="car-actions">
         <a href="+234 8030535894" class="call-btn">Buy</a>
-        <a href="showroom.html?id=accord-2024" class="whatsapp-btn"
-          >View More</a
-        >
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
     </div>
 
@@ -128,9 +126,7 @@ Brands{% endblock %} {% block content %}
 
       <div class="car-actions">
         <a href="+234 8030535894" class="call-btn">Buy</a>
-        <a href="showroom.html?id=accord-2024" class="whatsapp-btn"
-          >View More</a
-        >
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
     </div>
 
@@ -145,9 +141,7 @@ Brands{% endblock %} {% block content %}
 
       <div class="car-actions">
         <a href="+234 8030535894" class="call-btn">Buy</a>
-        <a href="showroom.html?id=accord-2024" class="whatsapp-btn"
-          >View More</a
-        >
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
     </div>
 
@@ -157,12 +151,12 @@ Brands{% endblock %} {% block content %}
         <img src="{% static 'img/camry.jpg' %}" alt="" />
       </div>
       <h3>Toyota Camry SE</h3>
-      <p class="car-meta">20,360 mi • Automatic • Petrol • Blue • 2022</p>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Black • 2022</p>
       <p class="lux-price">#49,950.00</p>
 
       <div class="car-actions">
         <a href="+234 8030535894" class="call-btn">Buy</a>
-        <a href="showroom.html?id=camry-2022" class="whatsapp-btn">View More</a>
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
     </div>
 
@@ -172,12 +166,12 @@ Brands{% endblock %} {% block content %}
         <img src="{% static 'img/camry.jpg' %}" alt="" />
       </div>
       <h3>Toyota Camry SE</h3>
-      <p class="car-meta">20,360 mi • Automatic • Petrol • Blue • 2022</p>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Black • 2022</p>
       <p class="lux-price">#49,950.00</p>
 
       <div class="car-actions">
         <a href="+234 8030535894" class="call-btn">Buy</a>
-        <a href="showroom.html?id=camry-2022" class="whatsapp-btn">View More</a>
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
     </div>
 
@@ -187,12 +181,12 @@ Brands{% endblock %} {% block content %}
         <img src="{% static 'img/camry.jpg' %}" alt="" />
       </div>
       <h3>Toyota Camry SE</h3>
-      <p class="car-meta">20,360 mi • Automatic • Petrol • Blue • 2022</p>
+      <p class="car-meta">20,360 mi • Automatic • Petrol • Black • 2022</p>
       <p class="lux-price">#49,950.00</p>
 
       <div class="car-actions">
         <a href="+234 8030535894" class="call-btn">Buy</a>
-        <a href="showroom.html?id=camry-2022" class="whatsapp-btn">View More</a>
+        <a href="{% url 'showroom' %}" class="whatsapp-btn">View More</a>
       </div>
     </div>
   </div>
@@ -203,7 +197,10 @@ Brands{% endblock %} {% block content %}
   <div class="appointment-wrapper">
     <!-- LEFT ILLUSTRATION -->
     <div class="appointment-illustration">
-      <img src="{% static 'img/bmw-collage.jpg' %}" alt="Zac Motors Illustration" />
+      <img
+        src="{% static 'img/bmw-collage.jpg' %}"
+        alt="Zac Motors Illustration"
+      />
     </div>
 
     <!-- RIGHT FORM -->
